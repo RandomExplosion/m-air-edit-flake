@@ -2,10 +2,14 @@
   lib,
   stdenv,
   fetchurl,
+  alsa-lib,
+  curl,
   autoPatchelfHook,
   libusb1,
   avahi,
   openssl,
+  freetype,
+  libGL,
 }:
 
 let
@@ -34,22 +38,26 @@ stdenv.mkDerivation rec {
 
   buildInputs = [
     stdenv.cc.cc.lib
+    alsa-lib
     libusb1
     avahi
     openssl
+    curl
+    freetype
+    libGL
   ];
 
-  unpackCmd = "tar -xf $curSrc --directory out";
+  unpackCmd = "mkdir out; tar -xf $curSrc --directory out";
 
   dontBuild = true;
 
   installPhase = ''
     runHook preInstall
 
-    mkdir -p $out/{etc,share} $out/etc/udev/rules.d
+    mkdir -p $out/bin
 
     ls
-    cp -a M-AIR-Edit $out/
+    cp -a M-AIR-Edit $out/bin/m-air-edit
 
     # ACTION=="add", ATTR{idVendor}=="0403", ATTR{manufacturer}=="Digilent", GROUP="plugdev", TAG+="uaccess", RUN+="$out/sbin/dftdrvdtch %s{busnum} %s{devnum}"
 
