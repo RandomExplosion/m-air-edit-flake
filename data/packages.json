@@ -1,0 +1,11 @@
+{
+  "m-air-edit": {
+    "version": "1.8.1",
+    "systems": {
+      "x86_64-linux": {
+        "url": "https://cdn-media.empowertribe.com/7862d36048ce4d9a8facf7210591093c/M-AIR-Edit_LINUX_1.8.1.tar.gz",
+        "hash": "sha256-zYYzuGMDJK3lLrss7zJIz/yVEhl67pTVPJonOdgkoIk="
+      }
+    }
+  }
+}
